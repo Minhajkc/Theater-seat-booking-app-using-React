@@ -28,7 +28,7 @@ function Continuebutton({ selectedSeats, setSelectedSeats,setopenDiv}) {
     dispatch(addSeat({ seats: availableSeats, date: startDate }));
     setSelectedSeats([]);
     setopenDiv(false);
-    alert('Added');
+   
   };
 
   return (
