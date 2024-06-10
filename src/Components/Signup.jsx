@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+
 function Signup() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -17,6 +18,7 @@ function Signup() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900">
+
       <div className="border-2 rounded-3xl p-8 rounded shadow-white w-full max-w-sm">
         <h1 className="text-2xl font-bold mb-6 text-center text-white">Sign Up</h1>
         <form onSubmit={handleSubmit}>

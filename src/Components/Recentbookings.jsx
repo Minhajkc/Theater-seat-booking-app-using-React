@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaBookmark } from "react-icons/fa";
+
 import { CiBookmark } from "react-icons/ci";
 import { useSelector } from 'react-redux';
 import Modal from 'react-modal';
@@ -35,7 +35,7 @@ function Recentbookings() {
 
   return (
     <div className='relative '>
-      <a className='float-right text-white font-mono cursor-pointer text-xs mt-1 font-bold' onClick={openModal}>RECENT BOOKINGS</a>
+      <span className='float-right text-white font-mono cursor-pointer text-xs mt-1 font-bold' onClick={openModal}>RECENT BOOKINGS</span>
       <CiBookmark className='text-green-500 cursor-pointer float-right mt-1 ' onClick={openModal} />
       <Modal
         isOpen={modalIsOpen}
@@ -45,17 +45,23 @@ function Recentbookings() {
       >
         <h2 className='text-2xl font-mono mb-4'>Booked Seats</h2>
         {bookedSeats.length > 0 ? (
-          <ul>
-            {bookedSeats.map((seat, index) => (
-               <li key={index} className='font-mono mb-2'>
-               Seat No: A{seat.seats}, Date: {new Date(seat.date).toDateString()}
-             </li>
-            ))}
-          </ul>
-          
-        ) : (
-          <p className='font-mono'>No seats booked.</p>
-        )}
+  <ul>
+    {bookedSeats.map((seat, index) => (
+      <li key={index} className="font-mono mb-2">
+        Seat No:{" "}
+        {seat.seats.map((seatNumber, seatIndex) => (
+          <span key={seatIndex}>
+            A{seatNumber}
+            {seatIndex < seat.seats.length - 1 ? ", " : ""}
+          </span>
+        ))}, Date: {new Date(seat.date).toDateString()}
+      </li>
+    ))}
+  </ul>
+) : (
+  <p className="font-mono">No seats booked.</p>
+)}
+
         <button
           className='mt-4 bg-gray-500 text-white px-4 py-2 rounded hover:bg-red-400'
           onClick={closeModal}
