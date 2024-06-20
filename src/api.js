@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000'; // Node.js server URL
+const API_URL = 'https://myserver-l91unoqi6-minhajs-projects-cc01af4f.vercel.app/'; // Node.js server URL
 
 export const fetchData = async () => {
   try {
