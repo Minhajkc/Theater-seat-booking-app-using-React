@@ -1,19 +1,34 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 function Signup() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  
+  const API_URL = 'http://localhost:5000';
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    console.log('Name:', name);
-    console.log('Email:', email);
-    console.log('Password:', password);
+
+    try {
+      const response = await axios.post(`${API_URL}/signup`, { name, email, password });
+      console.log('Server response:', response.data);
+
+      if (response.status === 201) {
+        navigate('/login');
+        toast.success('Now please login with your account !', {
+          position:'top-center'
+        });
+      }
+    } catch (error) {
+      console.error('Error sending signup data:', error);
+    }
+    
   };
 
   return (

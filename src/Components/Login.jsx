@@ -1,15 +1,34 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useDispatch } from 'react-redux';
+import { setUserLogged } from '../Redux/Seatslice';
+import { toast } from 'react-toastify';
 
 const Login = () => {
    const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const API_URL = 'http://localhost:5000';
 
-  const handleSubmit = (e) => {
+
+  
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Email:', email);
-    console.log('Password:', password);
+    try {
+      const response = await axios.post(`${API_URL}/login`, { email, password }, { withCredentials: true });
+      console.log('Server response:', response.data);
+      dispatch(setUserLogged(true));
+      navigate('/seats'); 
+      toast.success('You have logged in successfully!', { position:'top-center' });
+    } catch (error) {
+      console.error('Error sending login data:', error);
+      toast.error('Login failed. Please check your credentials and try again.', { position: 'top-center' });
+    }
   };
+  
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900">

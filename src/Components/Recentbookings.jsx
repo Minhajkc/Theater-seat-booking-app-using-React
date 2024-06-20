@@ -34,8 +34,8 @@ function Recentbookings() {
   };
 
   return (
-    <div className='relative '>
-      <span className='float-right text-white font-mono cursor-pointer text-xs mt-1 font-bold' onClick={openModal}>RECENT BOOKINGS</span>
+    <div className='relative  '>
+      <span className='float-right text-white font-mono cursor-pointer text-xs mt-1 font-bold' onClick={openModal}>My Bookings</span>
       <CiBookmark className='text-green-500 cursor-pointer float-right mt-1 ' onClick={openModal} />
       <Modal
         isOpen={modalIsOpen}
