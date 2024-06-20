@@ -11,7 +11,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const API_URL = 'http://localhost:5000';
+  const API_URL = 'https://theater-seat-booking-app-using-react.vercel.app';
 
 
   

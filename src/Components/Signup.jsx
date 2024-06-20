@@ -9,7 +9,7 @@ function Signup() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const API_URL = 'http://localhost:5000';
+  const API_URL = 'https://theater-seat-booking-app-using-react.vercel.app';
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
